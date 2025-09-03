@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="Identity-Preserving Text-to-Video Generation via Training-Free Prompt, Image, and Guidance Enhancement">
+    <meta name="keywords" content="Identity-Preserving Video Generation, Prompt Learning, Identity Preserved Guidance, ACM MM 2025">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TPIGE</title>
+  
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Dancing+Script&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+  
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="./static/images/conmo_icon.svg">
+  
+    <!-- JS Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+  </head>
+
+  
+<body>
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Identity-Preserving Text-to-Video Generation via Training-Free
+Prompt, Image, and Guidance Enhancement</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://github.com/Andyplus1/">Jiayi Gao</a><sup>1*</sup>,</span>
+            <span class="author-block">
+              Changcheng Hua</a><sup>1*</sup>,
+            </span>
+            <span class="author-block">
+              Yuxin Peng</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Qingchao Chen</a><sup>2</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://www.csyangliu.com/">Yang Liu</a><sup>1†</sup>
+            </span>
+          </div>
+
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Wangxuan Institute of Computer Technology, Peking University</span>
+            <span class="author-block"><sup>2</sup>National Institute of Health Data Science, Peking University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2504.02451"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/Andyplus1/IPT2V"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://pan.baidu.com/share/init?surl=aJbpDKdzQuYGekmELnISqw"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Identity-preserving text-to-video (IPT2V) generation creates videos faithful to both a reference subject image and a text prompt. While fine-tuning large pretrained video diffusion models on ID-matched data achieves state-of-the-art results on IPT2V, data scarcity and high tuning costs hinder broader improvement.
+            We thus introduce a <i><b>Training-Free Prompt, Image, and Guidance Enhancement</b></i> (TPIGE) framework that bridges the semantic gap between the video description and the reference image and design sampling guidance that enhances identity preservation and video quality, achieving performance gains at minimal cost.
+            Specifically, we first propose <i>&#9312; Face Aware Prompt Enhancement</i>, using GPT-4o to enhance the text prompt with facial details derived from the reference image. We then propose <i>&#9313; Prompt Aware Reference Image Enhancement</i>, leveraging an identity-preserving image generator to refine the reference image, rectifying conflicts with the text prompt. The above mutual refinement significantly improves input quality before video generation. Finally, we propose <i>&#9314; ID-Aware Spatiotemporal Guidance Enhancement</i>, utilizing unified gradients to optimize identity preservation and video quality jointly during generation.
+            Our method outperforms prior work and is validated by automatic and human evaluations on a 1000-video test set—winning first place in the ACM Multimedia 2025 Identity-Preserving Video Generation Challenge, demonstrating state-of-the-art performance and strong generality. <br> The code is available at <a href="https://github.com/Andyplus1/IPT2V.git">https://github.com/Andyplus1/IPT2V.git</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method Overview</h2>
+
+        <figure class="image" style="margin-bottom: 1.5em; text-align: center;">
+          <img src="./static/images/method.png" alt="Method Overview" style="width: 100%; max-width: 1000px;">
+        </figure>
+
+        <div class="content has-text-justified">
+          <p>
+            TPIGE consists of three parts: (1) Face Aware Prompt Enhancement enriches the prompt with facial attributes; (2) Prompt Aware Reference Image Enhancement edits the reference image to incorporate prompt-aligned appearance cues; and (3) ID-Aware Spatiotemporal Guidance Enhancement guide the sampling for improved identity preservation and video quality.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Method. -->
+
+    
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">TPIGE Results</h2>
+          <!-- <h3 class="title is-4">1. Multi-Subject</h3> -->
+
+          <!-- item video -->
+
+          <div class="columns is-vcentered is-mobile" style="margin-bottom: 1.5em;">
+            <div class="column is-narrow has-text-centered">
+              <img src="static/videos/ID_images/id002.png" alt="Prompt Image" style="max-height: 120px;">
+            </div>
+            <div class="column">
+              <p style="font-family: 'Poppins', cursive; font-size: 1.0em; color: #198de5;">
+                Text Prompt: The race car driver, in a red racing suit with sponsor logos, swerved through the winding track, pushing his car to the limits at the Grand Prix, the roar of the engine vibrating through his body as the crowd's cheers merged with the screeching tires and the smell of burning rubber filled the air.
+              </p>
+            </div>
+          </div>
+          <div class="columns is-mobile is-centered">
+            <div class="column is-half has-text-centered">
+              <p style="font-weight: bold; margin-bottom: 0.5em;">VACE</p>
+              <video data-group="group0" controls muted preload playsinline style="width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <source src="static/videos/output_videos/21.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column is-half has-text-centered">
+              <p style="font-weight: bold; margin-bottom: 0.5em;">Phantom</p>
+              <video data-group="group0" controls muted preload playsinline style="width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <source src="static/videos/output_videos/22.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="columns is-mobile is-centered">
+            <div class="column is-half has-text-centered">
+              <p style="font-weight: bold; margin-bottom: 0.5em;">Hailuo</p>
+              <video data-group="group0" controls muted preload playsinline style="width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <source src="static/videos/output_videos/23.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column is-half has-text-centered">
+              <p style="font-weight: bold; margin-bottom: 0.5em;">TPIGE (ours)</p>
+              <video data-group="group0" controls muted preload playsinline style="width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <source src="static/videos/output_videos/24.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <!-- /item video -->
+
+          <div class="my-6"></div> 
+
+          <!-- item video -->
+
+          <div class="columns is-vcentered is-mobile" style="margin-bottom: 1.5em;">
+            <div class="column is-narrow has-text-centered">
+              <img src="static/videos/ID_images/id007.png" alt="Prompt Image" style="max-height: 120px;">
+            </div>
+            <div class="column">
+              <p style="font-family: 'Poppins', cursive; font-size: 1.0em; color: #198de5;">
+                Text Prompt: The video features E'Lise Christensen, identified as a Veterinary Behaviorist from "Veterinary Behavior Consultations of NYC," seated at a table in what appears to be an indoor setting designed for educational or informative content. The background includes shelves with various books and items related to animals, suggesting a thematic focus on pet care or behavior. In the initial frame, E'Lise is seen holding a cat that is lying down on a white cloth on the table. The cat seems calm and comfortable with her touch. On the table, there are several objects including colorful toys, which might be used for behavioral training or enrichment activities. ...</p>
+            </div>
+          </div>
+          <div class="columns is-mobile is-centered">
+            <div class="column is-half has-text-centered">
+              <p style="font-weight: bold; margin-bottom: 0.5em;">VACE</p>
+              <video data-group="group0" controls muted preload playsinline style="width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <source src="static/videos/output_videos/71.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column is-half has-text-centered">
+              <p style="font-weight: bold; margin-bottom: 0.5em;">Phantom</p>
+              <video data-group="group0" controls muted preload playsinline style="width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <source src="static/videos/output_videos/72.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="columns is-mobile is-centered">
+            <div class="column is-half has-text-centered">
+              <p style="font-weight: bold; margin-bottom: 0.5em;">Hailuo</p>
+              <video data-group="group0" controls muted preload playsinline style="width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <source src="static/videos/output_videos/73.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column is-half has-text-centered">
+              <p style="font-weight: bold; margin-bottom: 0.5em;">TPIGE (ours)</p>
+              <video data-group="group0" controls muted preload playsinline style="width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <source src="static/videos/output_videos/74.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <!-- /item video -->
+
+          <div class="my-6"></div> 
+
+
+          <!-- item video -->
+
+          <div class="columns is-vcentered is-mobile" style="margin-bottom: 1.5em;">
+            <div class="column is-narrow has-text-centered">
+              <img src="static/videos/ID_images/id049.png" alt="Prompt Image" style="max-height: 120px;">
+            </div>
+            <div class="column">
+              <p style="font-family: 'Poppins', cursive; font-size: 1.0em; color: #198de5;">
+                Text Prompt: The mountain climber, in a fleece jacket and harness, scrambled across the rocky ledge, holding tight as the winds howled around him, the jagged peaks towering above and the valleys far below, with the sound of the wind whipping through the rocks.
+              </p>
+            </div>
+          </div>
+          <div class="columns is-mobile is-centered">
+            <div class="column is-half has-text-centered">
+              <p style="font-weight: bold; margin-bottom: 0.5em;">VACE</p>
+              <video data-group="group0" controls muted preload playsinline style="width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <source src="static/videos/output_videos/491.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column is-half has-text-centered">
+              <p style="font-weight: bold; margin-bottom: 0.5em;">Phantom</p>
+              <video data-group="group0" controls muted preload playsinline style="width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <source src="static/videos/output_videos/492.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="columns is-mobile is-centered">
+            <div class="column is-half has-text-centered">
+              <p style="font-weight: bold; margin-bottom: 0.5em;">Hailuo</p>
+              <video data-group="group0" controls muted preload playsinline style="width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <source src="static/videos/output_videos/493.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column is-half has-text-centered">
+              <p style="font-weight: bold; margin-bottom: 0.5em;">TPIGE (ours)</p>
+              <video data-group="group0" controls muted preload playsinline style="width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <source src="static/videos/output_videos/494.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <!-- /item video -->
+
+          <div class="my-6"></div> 
+
+          <!-- item video -->
+
+          <div class="columns is-vcentered is-mobile" style="margin-bottom: 1.5em;">
+            <div class="column is-narrow has-text-centered">
+              <img src="static/videos/ID_images/id014.png" alt="Prompt Image" style="max-height: 120px;">
+            </div>
+            <div class="column">
+              <p style="font-family: 'Poppins', cursive; font-size: 1.0em; color: #198de5;">
+                Text Prompt: The soccer player, in his team kit, dashed across the field, dodging defenders as he aimed for the goal, the roar of the crowd fueling his determination as the green grass beneath his feet was trampled by his quick movements, the bright stadium lights casting long shadows over the field.
+              </p>
+            </div>
+          </div>
+          <div class="columns is-mobile is-centered">
+            <div class="column is-half has-text-centered">
+              <p style="font-weight: bold; margin-bottom: 0.5em;">VACE</p>
+              <video data-group="group0" controls muted preload playsinline style="width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <source src="static/videos/output_videos/141.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column is-half has-text-centered">
+              <p style="font-weight: bold; margin-bottom: 0.5em;">Phantom</p>
+              <video data-group="group0" controls muted preload playsinline style="width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <source src="static/videos/output_videos/142.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="columns is-mobile is-centered">
+            <div class="column is-half has-text-centered">
+              <p style="font-weight: bold; margin-bottom: 0.5em;">Hailuo</p>
+              <video data-group="group0" controls muted preload playsinline style="width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <source src="static/videos/output_videos/143.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column is-half has-text-centered">
+              <p style="font-weight: bold; margin-bottom: 0.5em;">TPIGE (ours)</p>
+              <video data-group="group0" controls muted preload playsinline style="width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <source src="static/videos/output_videos/144.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <!-- /item video -->
+
+          
+        
+
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+<!-- JS to sync play/pause within groups -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const videos = document.querySelectorAll("video");
+
+    videos.forEach(video => {
+      video.addEventListener("play", () => {
+        const group = video.dataset.group;
+        if (!group) return;
+
+        document.querySelectorAll(`video[data-group='${group}']`).forEach(v => {
+          if (v !== video && v.paused) {
+            v.play().catch(e => console.warn("播放失败", e));
+          }
+        });
+      });
+
+      // video.addEventListener("pause", () => {
+      //   const group = video.dataset.group;
+      //   if (!group) return;
+
+      //   document.querySelectorAll(`video[data-group='${group}']`).forEach(v => {
+      //     if (v !== video && !v.paused) {
+      //       v.pause();
+      //     }
+      //   });
+      // });
+    });
+  });
+</script>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{gao2025ipt2v,
+      title={Identity-Preserving Text-to-Video Generation via Training-Free Prompt, Image, and Guidance Enhancement},
+      author={Gao, Jiayi and Hua, Changcheng and Chen, Qingchao and Peng, Yuxin and Liu, Yang},
+      journal={arXiv preprint arXiv:2509.01362},
+      year={2025}
+    }</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/pdf/2504.02451">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/Andyplus1/IPT2V" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            * Both authors contributed equally to this research.<br>
+            † Corresponding author.
+          </p>
+          <!-- <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+
+
+</html>
